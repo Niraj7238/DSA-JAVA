@@ -8,7 +8,7 @@ class Node {
     }
 }
 
-public class LinkedList3{
+public class LinkedList {
 
     Node head;
 
@@ -74,7 +74,7 @@ public class LinkedList3{
 
     public static void main(String[] args) {
 
-        LinkedList3 list = new LinkedList3();
+        LinkedList list = new LinkedList();
 
         list.insertAtEnd(10);
         list.insertAtEnd(20);
