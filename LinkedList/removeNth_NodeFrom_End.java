@@ -1,4 +1,4 @@
-// package LinkedList;
+package LinkedList;
 
 public class removeNth_NodeFrom_End {
 
@@ -75,6 +75,55 @@ public class removeNth_NodeFrom_End {
         // Delete Nth node from end
         prev.next = prev.next.next;
     }
+        // Slow-fast Approach  helper function
+    public Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next; // +1
+            fast = fast.next.next; // +2
+        }
+        return  slow; // slow is my mid nodess
+    }
+
+
+    public boolean checkPalidrome(){
+        if(head == null || head.next == null){
+            return  true;
+        }
+        // step1 -- find mid
+        Node midNode = findMid(head);
+
+
+        // step2-- reverse 2nd half
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+        while (curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev; // right head node
+        Node left = head;
+
+        // step3- check left half & right half
+        while(right != null){
+            if(left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
+
+
+
+
 
 
     public static void main(String[] args) {
@@ -84,13 +133,10 @@ public class removeNth_NodeFrom_End {
         // Add 10 nodes
         ll.addLast(1);
         ll.addLast(2);
-        ll.addLast(3);
-        ll.addLast(4);
-        ll.addLast(5);
+        ll.addLast(2);
+        ll.addLast(1);
 
-        // Print
-        ll.print();
-        ll.deletNth(3);
-        ll.print();
+        ll.print(); // 1->2->2->1
+        System.out.println(ll.checkPalidrome());
     }
 }
