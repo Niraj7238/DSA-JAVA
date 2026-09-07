@@ -28,11 +28,14 @@ public class BipartiteGraph{
         graph[2].add(new Edge(2, 4));
 
         graph[3].add(new Edge(3, 1));
-        graph[3].add(new Edge(3, 4));
+        // graph[3].add(new Edge(3, 4));      breaking cycle 
 
         graph[4].add(new Edge(4, 2));
-        graph[4].add(new Edge(4, 3));
+        // graph[4].add(new Edge(4, 3));
     }
+
+
+    // tc ---->O(V+E    )
 
     public static boolean isBipartite(ArrayList<Edge>[] graph){
         int col[] = new int[graph.length];
